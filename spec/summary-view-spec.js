@@ -1,21 +1,19 @@
 function testSummaryView() {
-  var summaryView = new SummaryView();
 
   function ArticleDouble(){}
 
   ArticleDouble.prototype = {
-    headline: function(){
-      return 'Cat rescued from tree';
+    viewSummary: function(){
+      return 'Heroic rescue in South London';
     }
   };
-  ArticleDouble.prototype = {
-    viewText: function(){
-      return 'Courageous 17 year old climbs up the tree to rescue a fluffy tabby orphaned cat.';
-    }
-  };  
 
+  var article = new ArticleDouble();
 
+  var summaryView = new SummaryView(article);
 
-
+  truthy.isTrue(summaryView.getHTML().includes('<div>Heroic rescue in South London</div>'));
 
 }
+
+testSummaryView();
