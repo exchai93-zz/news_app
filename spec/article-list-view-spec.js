@@ -1,19 +1,18 @@
 function testArticleListViewHeadlines() {
 
-  function ArticleDouble(){}
-  ArticleDouble.prototype = {
-    headline: function() {
-      return 'Cat climbs new tree';
-    }
-  };
-  var article = new ArticleDouble();
   function ArticleListDouble(){}
   ArticleListDouble.prototype = {
-    returnArticles: function() {
-      return [article];
+    showHeadlines: function() {
+      return ['Cat rescued from tree', 'Grandma wins lottery'];
     }
   };
 
+  var articleList = new ArticleListDouble();
 
+  articleListView = new ArticleListView(articleList);
+
+  assert.toEqual(articleListView.viewHeadlines(), '<div><h1>Cat rescued from tree</h1></div><div><h1>Grandma wins lottery</h1></div>');
 
 }
+
+testArticleListViewHeadlines();
