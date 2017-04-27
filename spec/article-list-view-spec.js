@@ -11,7 +11,7 @@ function testArticleListViewHeadlines() {
 
   articleListView = new ArticleListView(articleList);
 
-  assert.toEqual(articleListView.viewHeadlines(), '<div><h1>Cat rescued from tree</h1></div><div><h1>Grandma wins lottery</h1></div>');
+  assert.toEqual(articleListView.viewHeadlines(), '<p><h1>Cat rescued from tree</h1></p><p><h1>Grandma wins lottery</h1></p>');
 
 }
 

@@ -5,7 +5,7 @@
   ArticleListView.prototype.viewHeadlines = function () {
     string = '';
     this._articleList.showHeadlines().forEach(function(headline){
-    string = string + '<div><h1>' + headline + '</h1></div>';
+    string = string + '<p><h1>' + headline + '</h1></p>';
   });
     return string;
   };

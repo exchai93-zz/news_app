@@ -1,15 +1,16 @@
-// getArticle = function() {
-//   curl "http://news-summary-api.herokuapp.com/guardian?apiRequestUrl= https://www.theguardian.com/business/live/2017/apr/27/markets-trump-tax-plan-european-central-bank-draghi-business-live?show-fields=body";
-// };
-//
-//
-// getArticle();
+document.addEventListener('DOMContentLoaded', function () {
 
+var article = new Article('Nippy News goes live!');
+var article2 = new Article('Cat rescued from tree');
+var articleList = new ArticleList;
+articleList.storeArticle(article);
+articleList.storeArticle(article2);
+var articleListView = new ArticleListView(articleList);
+function renderHeadlines() {
+  var element = document.getElementById('headlines');
+  element.innerHTML = articleListView.viewHeadlines();
+}
 
+renderHeadlines();
 
-var xhr = new XMLHttpRequest();
-xhr.open("GET", "http://news-summary-api.herokuapp.com/guardian?apiRequestUrl= https://www.theguardian.com/business/live/2017/apr/27/markets-trump-tax-plan-european-central-bank-draghi-business-live", false);
-// xhr.send();
-
-console.log(xhr.status);
-console.log(xhr.statusText);
+});
