@@ -15,5 +15,12 @@
     return this._text;
   };
 
+  Article.prototype.addSummary = function(summary) {
+    this._summary = summary;
+  };
+
+  Article.prototype.viewSummary = function () {
+    return this._summary;
+};
 exports.Article = Article;
 })(this);
