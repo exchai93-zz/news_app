@@ -7,5 +7,13 @@
     return this._headline;
   };
 
-exports.Article = Article;  
+  Article.prototype.addText = function(text) {
+    this._text = text;
+  };
+
+  Article.prototype.viewText = function() {
+    return this._text;
+  };
+
+exports.Article = Article;
 })(this);
