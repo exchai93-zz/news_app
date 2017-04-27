@@ -4,16 +4,15 @@ function testSummaryView() {
 
   ArticleDouble.prototype = {
     viewSummary: function(){
-      return 'Heroic rescue in South London';
-    }
-  };
+       return 'Heroic rescue in South London';
+     }
+   };
 
-  var article = new ArticleDouble();
+   var article = new ArticleDouble();
+   var summaryView = new SummaryView(article);
 
-  var summaryView = new SummaryView(article);
+   truthy.isTrue(summaryView.getHTML().includes('<div>Heroic rescue in South London</div>'));
 
-  truthy.isTrue(summaryView.getHTML().includes('<div>Heroic rescue in South London</div>'));
+  }
 
-}
-
-testSummaryView();
+  testSummaryView();
