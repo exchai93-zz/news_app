@@ -1,14 +1,13 @@
 (function (exports){
   function ArticleListView(articleList){
-    this._articleList = articleList;
+    this.articleList = articleList;
   }
   ArticleListView.prototype.viewHeadlines = function () {
-    string = '';
-    this._articleList.showHeadlines().forEach(function(headline){
-    string = string + '<p><h1>' + headline + '</h1></p>';
-  });
-    return string;
-  };
-
+    var string = "<ul>";
+    for (i = 0; i < this.articleList.articles.length; i++){
+      string += "<div><li>" + this.articleList.articles + "</li></div></br><div id="+ i + "></div>";
+    }
+    return string + "</ul>";
+};
   exports.ArticleListView = ArticleListView;
 })(this);

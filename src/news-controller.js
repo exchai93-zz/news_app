@@ -1,20 +1,11 @@
-(function(exports) {
+(function (exports){
 
-  function NewsController(url) {
-    this._url = url;
+  function NewsController(articleList){
+    this.articleListView = new ArticleListView(articleList);
   }
 
-  NewsController.prototype.requestAPI = function() {
-    var request = new XMLHttpRequest();
-    request.open("GET", this._url, false);
-    request.send();
-    return request.responseText;
+  NewsController.prototype.renderHeadlines = function () {
+    document.getElementById('headlines').innerHTML = this.articleListView.viewHeadlines();
   };
-
-  NewsController.prototype.requestAndParseAPI = function() {
-    json_obj = JSON.parse(this.requestAPI());
-    return json_obj;
-  };
-
   exports.NewsController = NewsController;
 })(this);

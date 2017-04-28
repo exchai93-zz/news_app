@@ -1,25 +1,14 @@
-document.addEventListener('DOMContentLoaded', function () {
-
-var makers = 'http://news-summary-api.herokuapp.com/guardian?apiRequestUrl=';
-var guardian = 'http://content.guardianapis.com';
-var cats = '/books/2016/dec/07/top-10-cats-in-literature';
-var uknews = '/uk-news';
-var freeweatherapi = 'http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=a3d9eb01d4de82b9b8d0849ef604dbed&units=metric';
-
-newsController = new NewsController(freeweatherapi);
-var json_obj = newsController.requestAndParseAPI();
+var apiRequestUrl = "http://news-summary-api.herokuapp.com/guardian?apiRequestUrl=http://content.guardianapis.com/science/2016/oct/19/monkeys-smash-theory-that-only-humans-can-make-sharp-stone-tools?show-fields=header";
 
 var articleList = new ArticleList();
-articleList.storeArticle(new Article(json_obj.main.temp + ' is the temperature!'));
-articleList.storeArticle(new Article(json_obj.name + ' is where we are!'));
+requestAPI(apiRequestUrl);
 
-var articleListView = new ArticleListView(articleList);
+var newsController = new NewsController(articleList);
+newsController.renderHeadlines();
 
-function renderHeadlines() {
-  var element = document.getElementById('headlines');
-  element.innerHTML = articleListView.viewHeadlines();
+function requestAPI(){
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", apiRequestUrl, false);
+  xhr.send();
+  articleList.storeArticle(JSON.parse(xhr.response).response.content.webTitle);
 }
-
-renderHeadlines();
-
-});
