@@ -1,5 +1,8 @@
-User Stories
-___________
+## Week 7
+
+Further Javascript 
+
+### User Stories
 
 As a busy politician
 So I know what the big stories of the day are
